@@ -5,13 +5,25 @@
 require('console-stamp')(console, '[HH:MM:ss]');
 const axios = require('axios');
 require('dotenv').config();
+
+//Importing .env file...
 const token = process.env.API_TOKEN;
 const request = process.env.API_REQUEST;
+var debugValue = process.env.PRG_DEBUG;
+
+//Setting debug variable
+var debug = Boolean(false);
+debug = debugValue;
+
+//Initialising Raspi GPIO's
 var Gpio = require('onoff').Gpio;
 var HLF = new Gpio(6, 'high');
 var DLK = new Gpio(13, 'high');
 var LF = new Gpio(19, 'high');
 var GW = new Gpio(26, 'high');
+
+//Debug message of the request url and the api-token
+if (debug == true) {console.debug('API-URL: ' + request + token);}
 
 var config = {
     responseType: 'text'
@@ -29,38 +41,46 @@ var config = {
 })()
 
 async function abfrage() {
+  //Api request with url and token
   axios.get(request + token)
     .then((response) => {
+      //Put recieved data in variable
       var daten = response.data;
-      console.log(daten);
+      //Display debug data, if debug setting is on
+      if (debug == true) {console.debug(daten);}
+      //Stringify JSON object for further parsing
       var datenStr = JSON.stringify(daten);
-      //console.log('test'.includes('test'));
+
+      //Look up, if any of the following strings are in the stringifyed JSON object
       if (datenStr.includes('W 25-HLF20-01') == true) {
         console.log('Alarm HLF...');
-	HLF.writeSync(0);
+        //Set state of IO-Pin
+	      HLF.writeSync(0);
       } else {
-        //console.log('HLF bleibt in der 2');
-	HLF.writeSync(1);
-      } if (datenStr.includes('W 25-DLK23-01') == true) {
+	      HLF.writeSync(1);
+      } 
+      if (datenStr.includes('W 25-DLK23-01') == true) {
         console.log('Alarm DL...');
-	DLK.writeSync(0);
+        //Set state of IO-Pin
+	      DLK.writeSync(0);
       } else {
-        //console.log('DL bleibt in der 2');
-	DLK.writeSync(1);
-      } if (datenStr.includes('W 25-LF10-01') == true) {
+	      DLK.writeSync(1);
+      } 
+      if (datenStr.includes('W 25-LF10-01') == true) {
         console.log('Alarm LF10...');
-	LF.writeSync(0);
+        //Set state of IO-Pin
+	      LF.writeSync(0);
       } else {
-        //console.log('LF10 bleibt in der 2');
-	LF.writeSync(1);
-      } if (datenStr.includes('W 25-GW') == true) {
+	      LF.writeSync(1);
+      } 
+      if (datenStr.includes('W 25-GW') == true) {
         console.log('Alarm GW-Tech...');
-	GW.writeSync(0);
+        //Set state of IO-Pin
+	      GW.writeSync(0);
       } else {
-        //console.log('GW-Tech bleibt in der 2');
-	GW.writeSync(1);
+	      GW.writeSync(1);
       }
-      console.log(response.status);
+      //Print the response of the request
+      if (debug == true) {console.debug(response.status);}
     });
-  //console.log('Abfrage erfolgreich');
 }
