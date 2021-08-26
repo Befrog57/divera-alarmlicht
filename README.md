@@ -1,7 +1,6 @@
 # Was tut dieses Programm?
 Dieses NodeJS Script führt eine Abfrage bei der App Divera24/7 aus. Es wurde bisher die Abfrage "last-alarm" getestet. Idealerweise führt man das Script auf einem PI aus, da es hierfür ausgelegt ist (und auch nur mit entsprechenden GPIO Pins funktioniert)
 ## Installation und Nutzung
-### Linux:
 Als Erstes muss node installiert werden.
 
 ```bash
@@ -25,7 +24,7 @@ Zu guter Letzt kann man `alarmlicht.js` ausführen.
 node alarmlicht.js
 ```
 
-### Troubleshooting:
+## Troubleshooting:
 - Man sollte die Pinbelegung vom PI beachten, damit man die IO's richtig anschließt. [Hier](https://www.elektronik-kompendium.de/sites/raspberry-pi/1907101.html) kann man diese nachlesen.
 - Auf Desktop-Systemen, wird das Programm voraussichtlich nicht lauffähig sein, da diese mit IO's nichts anfangen können
   - Hier müsste man einige einfache Änderungen am Code vornehmen, um das Programm zu testen
