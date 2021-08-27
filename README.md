@@ -1,4 +1,4 @@
-# Was tut dieses Programm?
+# Funktion
 Dieses NodeJS Script führt eine Abfrage bei der App Divera24/7 aus. Es wurde bisher die Abfrage "last-alarm" getestet. Idealerweise führt man das Script auf einem PI aus, da es hierfür ausgelegt ist (und auch nur mit entsprechenden GPIO Pins funktioniert)
 ## Installation und Nutzung
 Als Erstes muss node installiert werden.
@@ -9,19 +9,19 @@ $ sudo apt install nodejs
 Daraufhin klont man das Repo.
 
 ```bash
-git clone https://github.com/Befrog57/divera-alarmlicht.git
+$ git clone https://github.com/Befrog57/divera-alarmlicht.git
 ```
-Nun kopiert man `.env.dist` nach `.env` und passt die Variablen auf sich an.
+Nun kopiert man `.env.dist` nach `.env` und passt die Variablen für sich an.
 
 Es müssen ebenfalls einige Abhängigkeiten installiert werden. **Achtung** hierfür muss man sich im git-repo befinden.
 
 ```bash
-npm install axios console-stamp dotenv onoff
+$ npm install axios console-stamp dotenv onoff
 ```
 Zu guter Letzt kann man `alarmlicht.js` ausführen.
 
 ```bash
-node alarmlicht.js
+$ node alarmlicht.js
 ```
 
 ## Troubleshooting:
