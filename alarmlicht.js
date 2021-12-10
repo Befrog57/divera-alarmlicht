@@ -58,21 +58,21 @@ async function abfrage() {
 	      HLF.writeSync(0);
       } else {
 	      HLF.writeSync(1);
-      } 
+      }
       if (datenStr.includes('W 25-DLK23-01') == true) {
         console.log('Alarm DL...');
         //Set state of IO-Pin
 	      DLK.writeSync(0);
       } else {
 	      DLK.writeSync(1);
-      } 
+      }
       if (datenStr.includes('W 25-LF10-01') == true) {
         console.log('Alarm LF10...');
         //Set state of IO-Pin
 	      LF.writeSync(0);
       } else {
 	      LF.writeSync(1);
-      } 
+      }
       if (datenStr.includes('W 25-GW') == true) {
         console.log('Alarm GW-Tech...');
         //Set state of IO-Pin
