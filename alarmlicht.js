@@ -60,27 +60,21 @@ async function abfrage() {
       //Look up, if any of the following strings are in the stringifyed JSON object
       if (datenStr.includes('W 25-HLF20-01') == true && pimode == true) {
         //Set state of IO-Pin
-        setPin('HLF');
+        HLF.writeSync(0);
       }
       if (datenStr.includes('W 25-DLK23-01') == true && pimode == true) {
         //Set state of IO-Pin
-	      setPin('DLK');
+	      DLK.writeSync(0);
       }
       if (datenStr.includes('W 25-LF10-01') == true && pimode == true) {
         //Set state of IO-Pin
-	      setPin('LF');
+	      LF.writeSync(0);
       }
       if (datenStr.includes('W 25-GW') == true && pimode == true) {
         //Set state of IO-Pin
-	      setPin('GW');
+	      GW.writeSync(0);
       }
       //Print the response of the request
       if (debug == true) {console.debug(response.status);}
     });
-}
-
-function setPin (fzg) {
-  //Set state of IO-Pin
-  console.log('Alarm ' + fzg + '...');
-  fzg.writeSync(0);
 }
