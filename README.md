@@ -4,7 +4,7 @@ Dieses NodeJS Script führt eine Abfrage bei der App Divera24/7 aus. Es wurde bi
 Als Erstes muss node installiert werden.
 
 ```bash
-$ sudo apt install nodejs
+$ sudo apt install nodejs python
 ```
 Daraufhin klont man das Repo.
 
