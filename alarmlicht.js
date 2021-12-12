@@ -57,47 +57,30 @@ async function abfrage() {
       if (debug == true) {console.debug(daten);}
       //Stringify JSON object for further parsing
       var datenStr = JSON.stringify(daten);
-
       //Look up, if any of the following strings are in the stringifyed JSON object
-      if (datenStr.includes('W 25-HLF20-01') == true) {
+      if (datenStr.includes('W 25-HLF20-01') == true && pimode == true) {
         //Set state of IO-Pin
-        if (pimode == true) {
-	      HLF.writeSync(0);
-        }
+        setPin('HLF');
       } else {
-        if (pimode == true) {
 	      HLF.writeSync(1);
-        }
       }
-      if (datenStr.includes('W 25-DLK23-01') == true) {
+      if (datenStr.includes('W 25-DLK23-01') == true && pimode == true) {
         //Set state of IO-Pin
-        if (pimode == true) {
-	      DLK.writeSync(0);
-        }
+	      setPin('DLK');
       } else {
-        if (pimode == true) {
 	      DLK.writeSync(1);
-        }
       }
-      if (datenStr.includes('W 25-LF10-01') == true) {
+      if (datenStr.includes('W 25-LF10-01') == true && pimode == true) {
         //Set state of IO-Pin
-        if (pimode == true) {
-	      LF.writeSync(0);
-        }
+	      setPin('LF');
       } else {
-        if (pimode == true) {
-	      LF.writeSync(1);
-        }
+	      DLK.writeSync(1);
       }
-      if (datenStr.includes('W 25-GW') == true) {
+      if (datenStr.includes('W 25-GW') == true && pimode == true) {
         //Set state of IO-Pin
-        if (pimode == true) {
-	      GW.writeSync(0);
-        }
+	      setPin('GW');
       } else {
-        if (pimode == true) {
 	      GW.writeSync(1);
-        }
       }
       //Print the response of the request
       if (debug == true) {console.debug(response.status);}
@@ -108,9 +91,4 @@ function setPin (fzg) {
   //Set state of IO-Pin
   console.log('Alarm ' + fzg + '...');
   fzg.writeSync(0);
-}
-
-function resetPin (fzg) {
-  //Set state of IO-Pin
-  fzg.writeSync(1);
 }
