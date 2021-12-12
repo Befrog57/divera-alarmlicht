@@ -61,26 +61,18 @@ async function abfrage() {
       if (datenStr.includes('W 25-HLF20-01') == true && pimode == true) {
         //Set state of IO-Pin
         setPin('HLF');
-      } else {
-	      HLF.writeSync(1);
       }
       if (datenStr.includes('W 25-DLK23-01') == true && pimode == true) {
         //Set state of IO-Pin
 	      setPin('DLK');
-      } else {
-	      DLK.writeSync(1);
       }
       if (datenStr.includes('W 25-LF10-01') == true && pimode == true) {
         //Set state of IO-Pin
 	      setPin('LF');
-      } else {
-	      DLK.writeSync(1);
       }
       if (datenStr.includes('W 25-GW') == true && pimode == true) {
         //Set state of IO-Pin
 	      setPin('GW');
-      } else {
-	      GW.writeSync(1);
       }
       //Print the response of the request
       if (debug == true) {console.debug(response.status);}
