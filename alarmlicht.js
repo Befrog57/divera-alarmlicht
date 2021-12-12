@@ -30,7 +30,7 @@ var GW = new Gpio(26, 'high');
 }
 
 //Debug message of the request url and the api-token
-if (debug == true) {console.debug('API-URL: ' + request + token);}
+if (debug == true) {console.debug('API-URL: https://www.divera247.com/api/' + request + '?accesskey=' + token);}
 
 var config = {
     responseType: 'text'
@@ -49,7 +49,7 @@ var config = {
 
 async function abfrage() {
   //Api request with url and token
-  axios.get(request + token)
+  axios.get('https://www.divera247.com/api/' + request + '?accesskey=' + token)
     .then((response) => {
       //Put recieved data in variable
       var daten = response.data;
