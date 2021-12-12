@@ -60,7 +60,6 @@ async function abfrage() {
 
       //Look up, if any of the following strings are in the stringifyed JSON object
       if (datenStr.includes('W 25-HLF20-01') == true) {
-        console.log('Alarm HLF...');
         //Set state of IO-Pin
         if (pimode == true) {
 	      HLF.writeSync(0);
@@ -71,7 +70,6 @@ async function abfrage() {
         }
       }
       if (datenStr.includes('W 25-DLK23-01') == true) {
-        console.log('Alarm DL...');
         //Set state of IO-Pin
         if (pimode == true) {
 	      DLK.writeSync(0);
@@ -82,7 +80,6 @@ async function abfrage() {
         }
       }
       if (datenStr.includes('W 25-LF10-01') == true) {
-        console.log('Alarm LF10...');
         //Set state of IO-Pin
         if (pimode == true) {
 	      LF.writeSync(0);
@@ -93,7 +90,6 @@ async function abfrage() {
         }
       }
       if (datenStr.includes('W 25-GW') == true) {
-        console.log('Alarm GW-Tech...');
         //Set state of IO-Pin
         if (pimode == true) {
 	      GW.writeSync(0);
@@ -110,6 +106,7 @@ async function abfrage() {
 
 function setPin (fzg) {
   //Set state of IO-Pin
+  console.log('Alarm ' + fzg + '...');
   fzg.writeSync(0);
 }
 
