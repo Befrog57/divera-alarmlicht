@@ -26,7 +26,7 @@ var Gpio = require('onoff').Gpio;
 var HLF = new Gpio(6, 'high');
 var DLK = new Gpio(13, 'high');
 var LF = new Gpio(19, 'high');
-var GW = new Gpio(26, 'high');
+var RW = new Gpio(26, 'high');
 }
 
 //Debug message of the request url and the api-token
@@ -76,7 +76,7 @@ async function abfrage() {
       if (datenStr.includes('W 25-GW') == true && pimode == true) {
         //Set state of IO-Pin
         console.log('Alarm GW...');
-	      GW.writeSync(0);
+	      RW.writeSync(0);
       }
       //Print the response of the request
       if (debug == true) {console.debug(response.status);}
