@@ -46,7 +46,7 @@ var config = {
     await abfrage();
   } catch(err) {
     console.error(err)
-    exit(1)
+    process.exit(1)
   }
 
 })()
