@@ -58,7 +58,7 @@ async function abfrage() {
       //Put recieved data in variable
       var daten = response.data;
       //Display debug data, if debug setting is on
-      if (debug == true) {console.debug(response.data.data);}
+      if (debug == true) {console.debug(daten);}
       //Stringify JSON object for further parsing
       var datenStr = JSON.stringify(daten);
       //Look up for how long the Alarm has been active, if its over 20mins, do nothing
