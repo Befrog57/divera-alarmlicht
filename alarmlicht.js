@@ -58,7 +58,7 @@ async function abfrage() {
       //Put recieved data in variable
       var daten = response.data;
       //Display debug data, if debug setting is on
-      if (debug == true) {console.debug(daten);}
+      if (debug == true) {console.debug(response.data.data);}
       //Stringify JSON object for further parsing
       var datenStr = JSON.stringify(daten);
       //Look up, if any of the following strings are in the stringifyed JSON object
