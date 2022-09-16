@@ -12,6 +12,10 @@ const request = process.env.API_REQUEST;
 var debugValue = process.env.PRG_DEBUG;
 var pimodeValue = process.env.PI_MODE;
 
+//Get UNIX time and convert it so seconds
+var currentTime = Date.now();
+currentTime = Math.floor(currentTime / 1000);
+
 //Setting debug variable
 var debug = Boolean(false);
 debug = debugValue;
@@ -42,7 +46,7 @@ var config = {
     await abfrage();
   } catch(err) {
     console.error(err)
-    exit(1)
+    process.exit(1)
   }
 
 })()
@@ -54,9 +58,19 @@ async function abfrage() {
       //Put recieved data in variable
       var daten = response.data;
       //Display debug data, if debug setting is on
-      if (debug == true) {console.debug(daten);}
+      if (debug == true) {console.debug(response.data.data);}
       //Stringify JSON object for further parsing
       var datenStr = JSON.stringify(daten);
+      //Look up for how long the Alarm has been active, if its over 20mins, do nothing
+      if (response.ts_update != "0") {
+        if (debug == true) {console.debug("Seconds since last Update:", currentTime - response.data.data.ts_update)}
+        if (currentTime - response.data.data.ts_update > "1200") {
+          process.exit (50);
+        }
+      } else if (currentTime - response.data.data.ts_publish > "1200") {
+        if (debug == true) {console.debug("Seconds since creation:", currentTime - response.data.data.ts_publish)}
+        process.exit (60);
+      }
       //Look up, if any of the following strings are in the stringifyed JSON object
       if (datenStr.includes('W 25-HLF20-01') == true && pimode == true) {
         //Set state of IO-Pin
