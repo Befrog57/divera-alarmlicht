@@ -12,6 +12,10 @@ const request = process.env.API_REQUEST;
 var debugValue = process.env.PRG_DEBUG;
 var pimodeValue = process.env.PI_MODE;
 
+//Get UNIX time and convert it so seconds
+var currentTime = Date.now();
+currentTime = Math.floor(currentTime / 1000);
+
 //Setting debug variable
 var debug = Boolean(false);
 debug = debugValue;
