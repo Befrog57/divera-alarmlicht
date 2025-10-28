@@ -82,9 +82,9 @@ async function abfrage() {
         console.log('Alarm DLK...');
 	      DLK.writeSync(0);
       }
-      if (datenStr.includes('W 25-LF10-01') == true && pimode == true) {
+      if (datenStr.includes('W 25-LF20KATS-01') == true && pimode == true) {
         //Set state of IO-Pin
-        console.log('Alarm LF...');
+        console.log('Alarm LF KatS...');
 	      LF.writeSync(0);
       }
       if (datenStr.includes('W 25-RW-01') == true && pimode == true) {
